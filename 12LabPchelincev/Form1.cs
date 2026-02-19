@@ -34,10 +34,6 @@ namespace _12LabPchelincev
             {
                 dataGridView1.Rows[i].Cells[1].Value = algArr[i];
             }
-
-            dataGridView1.Rows[0].Cells[0].Value = "true";
-            dataGridView1.Rows[1].Cells[0].Value = "true";
-            dataGridView1.Rows[2].Cells[0].Value = "true";
         }
 
         public void generate_Array(int arraySize)
