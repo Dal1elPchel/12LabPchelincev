@@ -136,6 +136,49 @@ namespace _12LabPchelincev
             searchTime = Environment.TickCount - startTime;
         }
 
+        public void quick_Sort(int[] cloneArray, out int comparisons, out int searchTime, out int swaps)
+        {
+            int comps = 0;
+            int swapCount = 0;
+
+            int startTime = Environment.TickCount;
+            void ReqursiveQuickSort(int leftBound, int rightBound)
+            {
+                if (leftBound < rightBound)
+                {
+                    int pivot = cloneArray[leftBound];
+                    int i = leftBound - 1;
+                    int j = rightBound + 1;
+                    do
+                    {
+                        do
+                        {
+                            i++;
+                            comps++;
+                        } while (cloneArray[i] < pivot);
+                        do
+                        {
+                            j--;
+                            comps++;
+                        } while (cloneArray[j] > pivot);
+                        if (i < j)
+                        {
+                            (cloneArray[i], cloneArray[j]) = (cloneArray[j], cloneArray[i]);
+                            swapCount++;
+                        }
+                    } while (i < j);
+                    ReqursiveQuickSort(leftBound, j);
+                    ReqursiveQuickSort(j + 1, rightBound);
+                }
+            }
+            ReqursiveQuickSort(0, cloneArray.Length - 1);
+            searchTime = Environment.TickCount - startTime;
+
+            comparisons = comps;
+            swaps = swapCount;
+        }
+
+
         public bool is_Sorted(int[] array)
         {
             for (int i = 0; i < array.Length - 1; i++)
@@ -177,6 +220,9 @@ namespace _12LabPchelincev
                             break;
                         case "Включение":
                             inclusion_Sort(cloneArray, out comps, out searchTime, out swapCount);
+                            break;
+                        case "Быстрая":
+                            quick_Sort(cloneArray, out comps, out searchTime, out swapCount);
                             break;
                         default:
                             break;
