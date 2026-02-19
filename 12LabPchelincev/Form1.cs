@@ -174,6 +174,39 @@ namespace _12LabPchelincev
             swaps = swapCount;
         }
 
+        public void shell_Sort(int[] cloneArray, out int comparisons, out int searchTime, out int swaps)
+        {
+            comparisons = 0;
+            swaps = 0;
+            int n = cloneArray.Length;
+
+            int startTime = Environment.TickCount;
+
+            int step = (int)Math.Pow(2, (int)Math.Log(n, 2) - 1) - 1;
+            while (step > 0)
+            {
+                for (int i = step; i < n; i++)
+                {
+                    int current = cloneArray[i];
+                    int j = i;
+                    while (j >= step && cloneArray[j - step] > current)
+                    {
+                        cloneArray[j] = cloneArray[j - step];
+                        j -= step;
+                        swaps++;
+                        comparisons++;
+                    }
+                    comparisons++;
+                    cloneArray[j] = current;
+                    swaps++;
+                }
+
+                step /= 2;
+            }
+
+            searchTime = Environment.TickCount - startTime;
+        }
+
 
         public bool is_Sorted(int[] array)
         {
@@ -220,10 +253,13 @@ namespace _12LabPchelincev
                         case "Быстрая":
                             quick_Sort(cloneArray, out comps, out searchTime, out swapCount);
                             break;
+                        case "Шелла":
+                            shell_Sort(cloneArray, out comps, out searchTime, out swapCount);
+                            break;
                         default:
                             break;
                     }
-
+                    
                     row.Cells[2].Value = comps;
                     row.Cells[3].Value = swapCount;
                     row.Cells[4].Value = searchTime;
