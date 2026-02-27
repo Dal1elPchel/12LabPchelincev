@@ -47,15 +47,17 @@
             // 
             this.arraySizeLabel.AutoSize = true;
             this.arraySizeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.arraySizeLabel.Location = new System.Drawing.Point(222, 289);
+            this.arraySizeLabel.Location = new System.Drawing.Point(166, 235);
+            this.arraySizeLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.arraySizeLabel.Name = "arraySizeLabel";
-            this.arraySizeLabel.Size = new System.Drawing.Size(167, 25);
+            this.arraySizeLabel.Size = new System.Drawing.Size(132, 20);
             this.arraySizeLabel.TabIndex = 0;
             this.arraySizeLabel.Text = "Размер массива";
             // 
             // numericUpDown1
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(414, 294);
+            this.numericUpDown1.Location = new System.Drawing.Point(310, 239);
+            this.numericUpDown1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.numericUpDown1.Maximum = new decimal(new int[] {
             1000000,
             0,
@@ -67,7 +69,7 @@
             0,
             0});
             this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(103, 22);
+            this.numericUpDown1.Size = new System.Drawing.Size(77, 20);
             this.numericUpDown1.TabIndex = 1;
             this.numericUpDown1.Value = new decimal(new int[] {
             10000,
@@ -77,9 +79,10 @@
             // 
             // sortButton
             // 
-            this.sortButton.Location = new System.Drawing.Point(31, 286);
+            this.sortButton.Location = new System.Drawing.Point(23, 232);
+            this.sortButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.sortButton.Name = "sortButton";
-            this.sortButton.Size = new System.Drawing.Size(127, 37);
+            this.sortButton.Size = new System.Drawing.Size(95, 30);
             this.sortButton.TabIndex = 2;
             this.sortButton.Text = "Сортировать";
             this.sortButton.UseVisualStyleBackColor = true;
@@ -87,9 +90,10 @@
             // 
             // exitButton
             // 
-            this.exitButton.Location = new System.Drawing.Point(646, 286);
+            this.exitButton.Location = new System.Drawing.Point(484, 232);
+            this.exitButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.exitButton.Name = "exitButton";
-            this.exitButton.Size = new System.Drawing.Size(127, 37);
+            this.exitButton.Size = new System.Drawing.Size(95, 30);
             this.exitButton.TabIndex = 3;
             this.exitButton.Text = "Выход";
             this.exitButton.UseVisualStyleBackColor = true;
@@ -97,6 +101,7 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -106,11 +111,12 @@
             this.ColumnPerest,
             this.ColumnTime,
             this.sorted});
-            this.dataGridView1.Location = new System.Drawing.Point(6, 7);
+            this.dataGridView1.Location = new System.Drawing.Point(4, 6);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(991, 266);
+            this.dataGridView1.Size = new System.Drawing.Size(743, 216);
             this.dataGridView1.TabIndex = 4;
             // 
             // Column1
@@ -175,14 +181,15 @@
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1024, 343);
+            this.ClientSize = new System.Drawing.Size(768, 279);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.exitButton);
             this.Controls.Add(this.sortButton);
             this.Controls.Add(this.numericUpDown1);
             this.Controls.Add(this.arraySizeLabel);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Form1";
             this.Text = "Pchelincev_24VP1_14LB";
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();

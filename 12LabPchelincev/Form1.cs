@@ -207,6 +207,49 @@ namespace _12LabPchelincev
             searchTime = Environment.TickCount - startTime;
         }
 
+        public void counting_Sort(int[] cloneArray, out int comparisons, out int searchTime, out int swaps)
+        {
+            comparisons = 0;
+            swaps = 0;
+            int n = cloneArray.Length;
+
+            int startTime = Environment.TickCount;
+
+            int maxElem = cloneArray[0];
+            swaps++;
+
+            for (int i = 1; i < n; i++)
+            {
+                if (cloneArray[i] > maxElem)
+                {
+                    maxElem = cloneArray[i];
+                    swaps++;
+                }
+
+                comparisons++;
+            }
+
+            int[] counters = new int[maxElem + 1];
+            for (int i = 0; i < n; i++)
+            {
+                int valueOfElem = cloneArray[i];
+                counters[valueOfElem]++;
+                swaps++;
+            }
+
+            int index = 0;
+            for (int i = 0; i < counters.Length; i++)
+            {
+                for (int j = 0; j < counters[i]; j++)
+                {
+                    cloneArray[index] = i;
+                    swaps++;
+                    index++;
+                }
+            }
+            searchTime = Environment.TickCount - startTime;
+        }
+
 
         public bool is_Sorted(int[] array)
         {
@@ -237,7 +280,7 @@ namespace _12LabPchelincev
                     string sortName = row.Cells[1].Value.ToString();
                     int[] cloneArray = (int[])array.Clone();
 
-                    int comps = 0, searchTime = 0, swapCount = 0;
+                    int comps = -1, searchTime = -1, swapCount = -1;
 
                     switch (sortName)
                     {
@@ -256,13 +299,21 @@ namespace _12LabPchelincev
                         case "Шелла":
                             shell_Sort(cloneArray, out comps, out searchTime, out swapCount);
                             break;
+                        case "Линейная":
+                            counting_Sort(cloneArray, out comps, out searchTime, out swapCount);
+                            break;
+                        case "Встроенная":
+                            int startTime = Environment.TickCount;
+                            Array.Sort(cloneArray);
+                            searchTime = Environment.TickCount - startTime;
+                            break;
                         default:
                             break;
                     }
                     
-                    row.Cells[2].Value = comps;
-                    row.Cells[3].Value = swapCount;
-                    row.Cells[4].Value = searchTime;
+                    row.Cells[2].Value = (comps != -1) ? comps.ToString() : "-";
+                    row.Cells[3].Value = (swapCount != -1) ? swapCount.ToString() : "-";
+                    row.Cells[4].Value = (searchTime != -1) ? searchTime.ToString() : "-";
                     row.Cells[5].Value = is_Sorted(cloneArray) ? "Да" : "Нет";
                 } else
                 {
